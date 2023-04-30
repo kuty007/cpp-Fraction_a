@@ -160,6 +160,9 @@ TEST_CASE("Reduce"){
     Fraction a(2,4);
     CHECK(a.getNumerator()==1);
     CHECK(a.getDenominator()==2);
+    Fraction b(0.00000001);
+    CHECK(b.getNumerator()==0);
+    CHECK(a.getDenominator()==1);
 }
 
 TEST_CASE("Negative"){
