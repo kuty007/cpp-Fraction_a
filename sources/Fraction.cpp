@@ -24,51 +24,57 @@ namespace ariel {
     int Fraction::getDenominator() const {
         return this->denominator;
     }
+    void Fraction::setNumerator(int numerator) {
+        this->numerator = numerator;
+    }
+    void Fraction::setDenominator(int denominator) {
+        this->denominator = denominator;
+    }
 
     //implement the operators
-    Fraction operator+(const Fraction &a, const Fraction &b) {
-        return Fraction(a.numerator * b.denominator + b.numerator * a.denominator, a.denominator * b.denominator);
+    Fraction operator+(const Fraction &frac_a, const Fraction &frac_b) {
+        return Fraction(frac_a.numerator * frac_b.denominator + frac_b.numerator * frac_a.denominator, frac_a.denominator * frac_b.denominator);
 
     }
 
-    Fraction operator+(const Fraction &a, const float &b) {
-        return Fraction(a.numerator + b * a.denominator, a.denominator);
+    Fraction operator+(const Fraction &frac_a, const float &frac_b) {
+        return Fraction(frac_a.numerator + frac_b * frac_a.denominator, frac_a.denominator);
     }
 
-    Fraction operator-(const Fraction &a, const Fraction &b) {
-        return Fraction(a.numerator * b.denominator - b.numerator * a.denominator, a.denominator * b.denominator);
+    Fraction operator-(const Fraction &frac_a, const Fraction &frac_b) {
+        return Fraction(frac_a.numerator * frac_b.denominator - frac_b.numerator * frac_a.denominator, frac_a.denominator * frac_b.denominator);
     }
 
-    Fraction operator*(const Fraction &a, const Fraction &b) {
-        return Fraction(a.numerator * b.numerator, a.denominator * b.denominator);
+    Fraction operator*(const Fraction &frac_a, const Fraction &frac_b) {
+        return Fraction(frac_a.numerator * frac_b.numerator, frac_a.denominator * frac_b.denominator);
     }
 
-    Fraction operator/(const Fraction &a, const Fraction &b) {
-        return Fraction(a.numerator * b.denominator, a.denominator * b.numerator);
+    Fraction operator/(const Fraction &frac_a, const Fraction &frac_b) {
+        return Fraction(frac_a.numerator * frac_b.denominator, frac_a.denominator * frac_b.numerator);
     }
 
-    bool operator==(const Fraction &a, const Fraction &b) {
-        return a.numerator * b.denominator == b.numerator * a.denominator;
+    bool operator==(const Fraction &frac_a, const Fraction &frac_b) {
+        return frac_a.numerator * frac_b.denominator == frac_b.numerator * frac_a.denominator;
     }
 
-    bool operator!=(const Fraction &a, const Fraction &b) {
-        return a.numerator * b.denominator != b.numerator * a.denominator;
+    bool operator!=(const Fraction &frac_a, const Fraction &frac_b) {
+        return frac_a.numerator * frac_b.denominator != frac_b.numerator * frac_a.denominator;
     }
 
-    bool operator>(const Fraction &a, const Fraction &b) {
-        return a.numerator * b.denominator > b.numerator * a.denominator;
+    bool operator>(const Fraction &frac_a, const Fraction &b) {
+        return frac_a.numerator * b.denominator > b.numerator * frac_a.denominator;
     }
 
-    bool operator<(const Fraction &a, const Fraction &b) {
-        return a.numerator * b.denominator < b.numerator * a.denominator;
+    bool operator<(const Fraction &frac_a, const Fraction &frac_b) {
+        return frac_a.numerator * frac_b.denominator < frac_b.numerator * frac_a.denominator;
     }
 
-    bool operator>=(const Fraction &a, const Fraction &b) {
-        return a.numerator * b.denominator >= b.numerator * a.denominator;
+    bool operator>=(const Fraction &frac_a, const Fraction &frac_b) {
+        return frac_a.numerator * frac_b.denominator >= frac_b.numerator * frac_a.denominator;
     }
 
-    bool operator<=(const Fraction &a, const Fraction &b) {
-        return a.numerator * b.denominator <= b.numerator * a.denominator;
+    bool operator<=(const Fraction &frac_a, const Fraction &frac_b) {
+        return frac_a.numerator * frac_b.denominator <= frac_b.numerator * frac_a.denominator;
     }
 
     ostream &operator<<(ostream &os, const Fraction &fraction) {
@@ -82,44 +88,44 @@ namespace ariel {
         return is;
     }
 
-    Fraction operator+(const float &a, const Fraction &b) {
-        return Fraction(a * b.denominator + b.numerator, b.denominator);
+    Fraction operator+(const float &flo_a, const Fraction &frac_b) {
+        return Fraction(flo_a * frac_b.denominator + frac_b.numerator, frac_b.denominator);
     }
 
-    Fraction operator-(const float &a, const Fraction &b) {
-        return Fraction(a * b.denominator - b.numerator, b.denominator);
+    Fraction operator-(const float &flo_a, const Fraction &frac_b) {
+        return Fraction(flo_a * frac_b.denominator - frac_b.numerator, frac_b.denominator);
     }
 
-    Fraction operator*(const float &a, const Fraction &b) {
-        return Fraction(a * b.numerator, b.denominator);
+    Fraction operator*(const float &flo_a, const Fraction &frac_b) {
+        return Fraction(flo_a * frac_b.numerator, frac_b.denominator);
     }
 
-    Fraction operator/(const float &a, const Fraction &b) {
-        return Fraction(a * b.denominator, b.numerator);
+    Fraction operator/(const float &flo_a, const Fraction &frac_b) {
+        return Fraction(flo_a * frac_b.denominator, frac_b.numerator);
     }
 
-    bool operator==(const float &a, const Fraction &b) {
-        return a * b.denominator == b.numerator;
+    bool operator==(const float &flo_a, const Fraction &frac_b) {
+        return flo_a * frac_b.denominator == frac_b.numerator;
     }
 
-    bool operator!=(const float &a, const Fraction &b) {
-        return a * b.denominator != b.numerator;
+    bool operator!=(const float &flo_a, const Fraction &frac_b) {
+        return flo_a * frac_b.denominator != frac_b.numerator;
     }
 
-    bool operator>(const float &a, const Fraction &b) {
-        return a * b.denominator > b.numerator;
+    bool operator>(const float &flo_a, const Fraction &frac_b) {
+        return flo_a * frac_b.denominator > frac_b.numerator;
     }
 
-    bool operator<(const float &a, const Fraction &b) {
-        return a * b.denominator < b.numerator;
+    bool operator<(const float &flo_a, const Fraction &frac_b) {
+        return flo_a * frac_b.denominator < frac_b.numerator;
     }
 
-    bool operator>=(const float &a, const Fraction &b) {
-        return a * b.denominator >= b.numerator;
+    bool operator>=(const float &flo_a, const Fraction &frac_b) {
+        return flo_a * frac_b.denominator >= frac_b.numerator;
     }
 
-    bool operator<=(const float &a, const Fraction &b) {
-        return a * b.denominator <= b.numerator;
+    bool operator<=(const float &flo_a, const Fraction &frac_b) {
+        return flo_a * frac_b.denominator <= frac_b.numerator;
     }
 
 
@@ -145,48 +151,48 @@ namespace ariel {
         return temp;
     }
 
-    Fraction operator-(const Fraction &a, const float &b) {
+    Fraction operator-(const Fraction &frac_a, const float &flo_b) {
 
-        return Fraction(b * a.denominator, a.numerator);
+        return Fraction(flo_b * frac_a.denominator, frac_a.numerator);
     }
 
-    Fraction operator*(const Fraction &a, const float &b) {
+    Fraction operator*(const Fraction &frac_a, const float &flo_b) {
 
-        return Fraction(b * a.denominator, a.numerator);
+        return Fraction(flo_b * frac_a.denominator, frac_a.numerator);
     }
 
-    Fraction operator/(const Fraction &a, const float &b) {
+    Fraction operator/(const Fraction &frac_a, const float &flo_b) {
 
-        return Fraction(b * a.denominator, a.numerator);
+        return Fraction(flo_b * frac_a.denominator, frac_a.numerator);
     }
 
-    bool operator==(const Fraction &a, const float &b) {
+    bool operator==(const Fraction &frac_a, const float &flo_b) {
 
         return 1;
     }
 
-    bool operator!=(const Fraction &a, const float &b) {
+    bool operator!=(const Fraction &frac_a, const float &flo_b) {
         return 1;
 
 
     }
 
-    bool operator>(const Fraction &a, const float &b) {
+    bool operator>(const Fraction &frac_a, const float &flo_b) {
 
         return 1;
     }
 
-    bool operator<(const Fraction &a, const float &b) {
+    bool operator<(const Fraction &frac_a, const float &flo_b) {
 
         return 1;
     }
 
-    bool operator>=(const Fraction &a, const float &b) {
+    bool operator>=(const Fraction &frac_a, const float &flo_b) {
 
         return 1;
     }
 
-    bool operator<=(const Fraction &a, const float &b) {
+    bool operator<=(const Fraction &frac_a, const float &flo_b) {
 
         return 1;
     }
